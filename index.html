@@ -1479,49 +1479,53 @@ function printInvoice(id) {
   document.getElementById('print-doc').innerHTML = `
     <div class="print-top">
       <div>
-        <div style="margin-bottom:8px"><svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(30,30)" fill="none" stroke-linecap="round">
-    <path d="M-24 16 A28 28 0 0 1 24 16" stroke="#ff3c5f" stroke-width="1.5" opacity="0.2"/>
-    <path d="M-17 10 A20 20 0 0 1 17 10" stroke="#ff3c5f" stroke-width="1.6" opacity="0.5"/>
-    <path d="M-10 4 A12 12 0 0 1 10 4" stroke="#ff3c5f" stroke-width="2" opacity="0.9"/>
-    <line x1="0" y1="4" x2="0" y2="16" stroke="#ff3c5f" stroke-width="1.5" opacity="0.55"/>
-    <line x1="-10" y1="16" x2="10" y2="16" stroke="#ff3c5f" stroke-width="1.2" opacity="0.3"/>
-    <circle cx="0" cy="4" r="3.5" fill="#ff3c5f"/>
-    <circle cx="0" cy="4" r="1.5" fill="white" opacity="0.9"/>
-  </g>
-  <text x="68" y="24" font-family="Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="20" letter-spacing="3" fill="#0f172a">SHEF-DORI</text>
-  <line x1="68" y1="30" x2="215" y2="30" stroke="#ff3c5f" stroke-width="0.8" opacity="0.4"/>
-  <text x="69" y="43" font-family="Helvetica Neue,Arial,sans-serif" font-size="7.5" letter-spacing="4" fill="#ff3c5f" font-weight="700">SECURITY  SYSTEMS</text>
-  <text x="69" y="55" font-family="Helvetica Neue,Arial,sans-serif" font-size="7" fill="#94a3b8" letter-spacing="0.5">Видеонаблюдение · СОТ · Охранителни системи</text>
-</svg></div>
-        <div class="print-subtitle" style="font-size:13pt;font-weight:700;color:#111">ФАКТУРА № ${inv.number}</div>
+        <svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(30,30)" fill="none" stroke-linecap="round">
+            <path d="M-24 16 A28 28 0 0 1 24 16" stroke="#ff3c5f" stroke-width="1.5" opacity="0.2"/>
+            <path d="M-17 10 A20 20 0 0 1 17 10" stroke="#ff3c5f" stroke-width="1.6" opacity="0.5"/>
+            <path d="M-10 4 A12 12 0 0 1 10 4" stroke="#ff3c5f" stroke-width="2" opacity="0.9"/>
+            <line x1="0" y1="4" x2="0" y2="16" stroke="#ff3c5f" stroke-width="1.5" opacity="0.55"/>
+            <line x1="-10" y1="16" x2="10" y2="16" stroke="#ff3c5f" stroke-width="1.2" opacity="0.3"/>
+            <circle cx="0" cy="4" r="3.5" fill="#ff3c5f"/>
+            <circle cx="0" cy="4" r="1.5" fill="white" opacity="0.9"/>
+          </g>
+          <text x="68" y="24" font-family="Helvetica Neue,Arial,sans-serif" font-weight="900" font-size="20" letter-spacing="3" fill="#0f172a">SHEF-DORI</text>
+          <line x1="68" y1="30" x2="215" y2="30" stroke="#ff3c5f" stroke-width="0.8" opacity="0.4"/>
+          <text x="69" y="43" font-family="Helvetica Neue,Arial,sans-serif" font-size="7.5" letter-spacing="4" fill="#ff3c5f" font-weight="700">SECURITY  SYSTEMS</text>
+          <text x="69" y="55" font-family="Helvetica Neue,Arial,sans-serif" font-size="7" fill="#94a3b8" letter-spacing="0.5">Видеонаблюдение · СОТ · Охранителни системи</text>
+        </svg>
       </div>
-      <div class="print-company">
-        <strong>${s.company || 'Вашата фирма'}</strong>
-        ${s.eik ? `ЕИК: ${s.eik}<br>` : ''}
-        ${s.vat ? `ДДС №: ${s.vat}<br>` : ''}
-        ${s.mol ? `МОЛ: ${s.mol}<br>` : ''}
-        ${s.address ? `${s.address}<br>` : ''}
-        ${s.phone ? `Тел.: ${s.phone}<br>` : ''}
-        ${s.email ? `${s.email}` : ''}
+      <div style="text-align:right">
+        <div style="font-size:24pt;font-weight:900;color:#111;letter-spacing:1px">ФАКТУРА</div>
+        <div style="font-size:14pt;font-weight:700;color:#ff3c5f">№ ${inv.number}</div>
+        ${inv.type==='proforma' ? '<div style="font-size:9pt;color:#888;margin-top:4px">ПРОФОРМА</div>' : ''}
+        ${inv.type==='credit' ? '<div style="font-size:9pt;color:#cc2222;margin-top:4px">КРЕДИТНО ИЗВЕСТИЕ</div>' : ''}
       </div>
     </div>
     <div class="print-parties">
       <div>
         <div class="print-party-label">Доставчик</div>
         <div class="print-party-name">${s.company || '—'}</div>
-        <p>${s.eik ? 'ЕИК: ' + s.eik + '<br>' : ''}
-        ${s.vat ? 'ДДС №: ' + s.vat + '<br>' : ''}
-        ${s.mol ? 'МОЛ: ' + s.mol + '<br>' : ''}
-        ${s.address || ''}</p>
+        <p style="font-size:9.5pt;line-height:1.8;color:#444">
+          ${s.eik ? 'ЕИК: ' + s.eik + '<br>' : ''}
+          ${s.vat ? 'ДДС №: ' + s.vat + '<br>' : ''}
+          ${s.mol ? 'МОЛ: ' + s.mol + '<br>' : ''}
+          ${s.address ? s.address + '<br>' : ''}
+          ${s.phone ? 'Тел.: ' + s.phone + '<br>' : ''}
+          ${s.email || ''}
+        </p>
       </div>
       <div>
         <div class="print-party-label">Получател</div>
         <div class="print-party-name">${c.name || '—'}</div>
-        <p>${c.eik ? 'ЕИК: ' + c.eik + '<br>' : ''}
-        ${c.vat ? 'ДДС №: ' + c.vat + '<br>' : ''}
-        ${c.mol ? 'МОЛ: ' + c.mol + '<br>' : ''}
-        ${c.address || ''}</p>
+        <p style="font-size:9.5pt;line-height:1.8;color:#444">
+          ${c.eik ? 'ЕИК: ' + c.eik + '<br>' : ''}
+          ${c.vat ? 'ДДС №: ' + c.vat + '<br>' : ''}
+          ${c.mol ? 'МОЛ: ' + c.mol + '<br>' : ''}
+          ${c.address ? c.address + '<br>' : ''}
+          ${c.email ? c.email + '<br>' : ''}
+          ${c.phone ? 'Тел.: ' + c.phone : ''}
+        </p>
       </div>
     </div>
     <div class="print-meta">
@@ -1548,12 +1552,8 @@ function printInvoice(id) {
         <tr class="grand"><td>Общо за плащане:</td><td>${fmtN(t.total)} ${currency}</td></tr>
       </table>
     </div>
-    ${s.iban ? `<div class="print-bank">
-      <strong>Банкова информация:</strong>
-      IBAN: ${s.iban}
-      ${s.bic ? ' | BIC: ' + s.bic : ''}
-      ${s.bank ? ' | Банка: ' + s.bank : ''}
-    </div>` : ''}
+    ${s.iban ? `<div class="print-bank">Банкова сметка: ${s.iban}${s.bic ? ' | BIC: ' + s.bic : ''}${s.bank ? ' | ' + s.bank : ''}</div>` : ''}
+    ${inv.notes ? `<div style="margin-top:0.8cm;font-size:9.5pt;color:#555"><strong>Забележка:</strong> ${inv.notes}</div>` : ''}
     <div class="print-sigs">
       <div class="print-sig">Съставил: ${s.mol || '.................................'}</div>
       <div class="print-sig">Получил: .................................</div>
