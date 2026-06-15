@@ -1496,7 +1496,8 @@ function printInvoice(id) {
           </svg>
           <div>
             <div style="font-weight:900;font-size:18pt;letter-spacing:3px;color:#0f172a">SHEF-DORI</div>
-            <div style="font-size:7pt;letter-spacing:4px;color:#ff3c5f;font-weight:700;margin-top:1px">SECURITY SYSTEMS</div>
+            <div style="height:1px;background:#ff3c5f;opacity:0.5;margin:2px 0 3px"></div>
+            <div style="font-size:7pt;letter-spacing:4px;color:#ff3c5f;font-weight:700">SECURITY SYSTEMS</div>
             <div style="font-size:6.5pt;color:#94a3b8;letter-spacing:0.5px;margin-top:1px">Видеонаблюдение · СОТ · Охранителни системи</div>
           </div>
         </div>
@@ -1596,9 +1597,9 @@ function printInvoice(id) {
       <!-- Суми -->
       <div class="print-totals">
         <table>
-          <tr><td>Данъчна основа:</td><td>${fmtN(t.sub)} ${currency}</td></tr>
-          <tr><td>ДДС:</td><td>${fmtN(t.vatAmt)} ${currency}</td></tr>
-          <tr class="grand" style="color:#2E7D32"><td>Общо за плащане:</td><td>${fmtN(t.total)} ${currency}</td></tr>
+          <tr><td style="font-weight:700;font-size:10pt;color:#111">Данъчна основа:</td><td style="font-weight:700;font-size:10pt;color:#111;text-align:right">${fmtN(t.sub)} ${currency}</td></tr>
+          <tr><td style="font-weight:700;font-size:10pt;color:#111">ДДС:</td><td style="font-weight:700;font-size:10pt;color:#111;text-align:right">${fmtN(t.vatAmt)} ${currency}</td></tr>
+          <tr class="grand"><td style="color:#1B5E20;font-weight:900;font-size:12pt">Общо за плащане:</td><td style="color:#1B5E20;font-weight:900;font-size:12pt;text-align:right">${fmtN(t.total)} ${currency}</td></tr>
         </table>
       </div>
 
