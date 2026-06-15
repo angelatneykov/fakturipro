@@ -1547,20 +1547,20 @@ function printInvoice(id) {
       </div>
 
       <!-- Доставчик / Получател -->
-      <div class="print-parties">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1cm;margin-bottom:0.5cm;padding:0.35cm 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc">
         <div>
-          <div class="print-party-label">Доставчик</div>
-          <div class="print-party-name">${s.company || '—'}</div>
-          <p style="font-size:9.5pt;line-height:1.8;color:#444">
-            ${s.eik ? 'ЕИК: ' + s.eik + '<br>' : ''}${s.vat ? 'ДДС №: ' + s.vat + '<br>' : ''}${s.mol ? 'МОЛ: ' + s.mol + '<br>' : ''}${s.address ? s.address + '<br>' : ''}${s.phone ? 'Тел.: ' + s.phone + '<br>' : ''}${s.email || ''}
-          </p>
+          <div style="font-size:7pt;text-transform:uppercase;letter-spacing:1px;color:#999;font-weight:700;margin-bottom:3px">Доставчик</div>
+          <div style="font-size:10pt;font-weight:700;margin-bottom:2px">${s.company || '—'}</div>
+          <div style="font-size:8pt;line-height:1.5;color:#444">
+            ${s.eik ? 'ЕИК: ' + s.eik + '<br>' : ''}${s.vat ? 'ДДС №: ' + s.vat + '<br>' : ''}${s.mol ? 'МОЛ: ' + s.mol + '<br>' : ''}${s.address ? s.address.split(',').slice(0,2).join(',') : ''}
+          </div>
         </div>
         <div>
-          <div class="print-party-label">Получател</div>
-          <div class="print-party-name">${c.name || '—'}</div>
-          <p style="font-size:9.5pt;line-height:1.8;color:#444">
-            ${c.eik ? 'ЕИК: ' + c.eik + '<br>' : ''}${c.vat ? 'ДДС №: ' + c.vat + '<br>' : ''}${c.mol ? 'МОЛ: ' + c.mol + '<br>' : ''}${c.address ? c.address + '<br>' : ''}${c.email ? c.email + '<br>' : ''}${c.phone ? 'Тел.: ' + c.phone : ''}
-          </p>
+          <div style="font-size:7pt;text-transform:uppercase;letter-spacing:1px;color:#999;font-weight:700;margin-bottom:3px">Получател</div>
+          <div style="font-size:10pt;font-weight:700;margin-bottom:2px">${c.name || '—'}</div>
+          <div style="font-size:8pt;line-height:1.5;color:#444">
+            ${c.eik ? 'ЕИК: ' + c.eik + '<br>' : ''}${c.vat ? 'ДДС №: ' + c.vat + '<br>' : ''}${c.mol ? 'МОЛ: ' + c.mol + '<br>' : ''}${c.address ? c.address.split(',').slice(0,2).join(',') : ''}
+          </div>
         </div>
       </div>
 
