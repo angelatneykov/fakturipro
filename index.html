@@ -1489,7 +1489,6 @@ function printInvoice(id) {
       <td>${it.desc || ''}</td>
       <td class="num">${parseFloat(it.qty||1).toFixed(3)} ${it.unit||''}</td>
       <td class="num">${parseFloat(it.price||0).toFixed(2)}</td>
-      <td class="num">${it.vat||0}%</td>
       <td class="num">${fmtN(vatAmt)}</td>
       <td class="num">${fmtN(line + vatAmt)}</td>
     </tr>`;
@@ -1605,7 +1604,6 @@ function printInvoice(id) {
           <th>#</th><th>Описание</th>
           <th class="num">Количество</th>
           <th class="num">Ед. цена</th>
-          <th class="num">ДДС %</th>
           <th class="num">ДДС сума</th>
           <th class="num">Общо (${currency})</th>
         </tr></thead>
