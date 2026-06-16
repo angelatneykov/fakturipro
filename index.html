@@ -1489,7 +1489,6 @@ function printInvoice(id) {
       <td>${it.desc || ''}</td>
       <td class="num">${parseFloat(it.qty||1).toFixed(3)} ${it.unit||''}</td>
       <td class="num">${parseFloat(it.price||0).toFixed(2)}</td>
-      <td class="num">${fmtN(vatAmt)}</td>
       <td class="num">${fmtN(line + vatAmt)}</td>
     </tr>`;
   }).join('');
@@ -1604,7 +1603,6 @@ function printInvoice(id) {
           <th>#</th><th>Описание</th>
           <th class="num">Количество</th>
           <th class="num">Ед. цена</th>
-          <th class="num">ДДС сума</th>
           <th class="num">Общо (${currency})</th>
         </tr></thead>
         <tbody>${rows}</tbody>
@@ -1615,7 +1613,7 @@ function printInvoice(id) {
         <table>
           <tr><td style="font-weight:600;font-size:10pt;color:#000 !important;-webkit-print-color-adjust:exact">Данъчна основа:</td><td style="font-weight:600;font-size:10pt;color:#000;text-align:right;-webkit-print-color-adjust:exact">${fmtN(t.sub)} ${currency}</td></tr>
           <tr><td style="font-weight:600;font-size:10pt;color:#000;-webkit-print-color-adjust:exact">ДДС:</td><td style="font-weight:600;font-size:10pt;color:#000;text-align:right;-webkit-print-color-adjust:exact">${fmtN(t.vatAmt)} ${currency}</td></tr>
-          <tr class="grand"><td style="color:#000;font-weight:900;font-size:12pt;-webkit-print-color-adjust:exact">Общо за плащане:</td><td style="color:#1B5E20;font-weight:900;font-size:12pt;text-align:right;-webkit-print-color-adjust:exact">${fmtN(t.total)} ${currency}</td></tr>
+          <tr class="grand"><td style="color:#000;font-weight:900;font-size:12pt;print-color-adjust:exact;-webkit-print-color-adjust:exact">Общо за плащане:</td><td style="color:#1B5E20;font-weight:900;font-size:12pt;text-align:right;print-color-adjust:exact;-webkit-print-color-adjust:exact">${fmtN(t.total)} ${currency}</td></tr>
         </table>
       </div>
 
